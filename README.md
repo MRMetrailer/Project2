@@ -1,2 +1,2 @@
 # Project2
-Coding bot camp project 2
+Coding boot camp project 2
