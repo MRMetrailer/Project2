@@ -1,6 +1,5 @@
 // Get references to page elements
-var $exampleText = $("#example-text");
-var $exampleDescription = $("#example-description");
+
 var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
 
@@ -35,7 +34,7 @@ var refreshExamples = function() {
   API.getExamples().then(function(data) {
     var $examples = data.map(function(example) {
       var $a = $("<a>")
-        .text(example.text)
+        .text(example.name)
         .attr("href", "/example/" + example.id);
 
       var $li = $("<li>")
@@ -65,12 +64,13 @@ var handleFormSubmit = function(event) {
   event.preventDefault();
 
   var example = {
-    text: $exampleText.val().trim(),
-    description: $exampleDescription.val().trim()
+    name: $("#example-name").val().trim(),
+    entries: $("#example-entries").val().trim(),
+    link: $("#example-link").val().trim(),
   };
 
-  if (!(example.text && example.description)) {
-    alert("You must enter an example text and description!");
+  if (!(example.name && example.entries && example.link)) {
+    alert("You must enter a name, # of entries and link");
     return;
   }
 
@@ -78,8 +78,9 @@ var handleFormSubmit = function(event) {
     refreshExamples();
   });
 
-  $exampleText.val("");
-  $exampleDescription.val("");
+  $("#example-name").val("");
+  $("#example-entries").val("");
+  $("#example-link").val("");
 };
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
