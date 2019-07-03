@@ -1,56 +1,49 @@
-var milisec=0;
-var seconds=0;
-var minutes=0;
-var winner = '';
-var contestants=[];
+$(function(){
 
-function processForm(obj_f) {
-	seconds = 7;
-	contestants = obj_f.userinput.value.split("\n");
-	findWinner();
-}
-function winnerIs() {
-				document.getElementById('results').innerHTML='&nbsp;&nbsp;&nbsp;&nbsp;And the winner is.....&nbsp;&nbsp;&nbsp;&nbsp;<p />&nbsp;<p /><winner>' 
-				+ contestants[Math.floor(Math.random()*contestants.length)] + '</winner>';
-}
+	$('.roulette').find('img').hover(function(){
+		console.log($(this).height());
+	});
+	var appendLogMsg = function(msg) {
+		$('#msg')
+	.append('<p class="muted">' + msg + '</p>')
+	.scrollTop(100000000);
 
-function findWinner(){
- var x=0;
- if (milisec<=0){
-    milisec=9
-    seconds-=1
- 	}
- if (seconds<=-1){
-    milisec=0
- 	}
+	}
+	var p = {
+		startCallback : function() {
+			appendLogMsg('start');
+			$('#speed, #duration').slider('disable');
+			$('#stopImageNumber').spinner('disable');
+			$('.start').attr('disabled', 'true');
+			$('.stop').removeAttr('disabled');
+		},
+		slowDownCallback : function() {
+			appendLogMsg('slowdown');
+			$('.stop').attr('disabled', 'true');
+		},
+		stopCallback : function($stopElm) {
+			appendLogMsg('stop');
+			$('#speed, #duration').slider('enable');
+			$('#stopImageNumber').spinner('enable');
+			$('.start').removeAttr('disabled');
+			$('.stop').attr('disabled', 'true');
+		}
 
-    if(seconds <= 0){
-			clearTimeout();
-			// keep trying if a black line is retrieved. Give up after 100 tries;
-			winner = contestants[Math.floor(Math.random()*contestants.length)];
-			while (winner.length < 2) {
-				winner = contestants[Math.floor(Math.random()*contestants.length)];
-				x++;
-				if (x > 100) {break;}
-			}
-				document.getElementById('results').innerHTML='&nbsp;&nbsp;&nbsp;&nbsp;And the winner is.....&nbsp;&nbsp;&nbsp;&nbsp;<div id="final"><p />&nbsp;<br /><winner>' + winner + '!</winner></div>';
-		} else {
-			winnerIs();
-      setTimeout("findWinner()",100) 
-    	milisec-=1
-      }
-}
- 
-function hideNames() {
-				document.getElementById('names').style.visibility='hidden';
-				document.getElementById('show').innerHTML='<a class="blue" onClick="showNames(); return false;">Show names in box</a>';
-}
+	}
+	var rouletter = $('div.roulette');
+	rouletter.roulette(p);	
+	$('.stop').click(function(){
+		var stopImageNumber = $('.stopImageNumber').val();
+		if(stopImageNumber == "") {
+			stopImageNumber = null;
+		}
+		rouletter.roulette('stop');	
+	});
+	$('.stop').attr('disabled', 'true');
+	$('.start').ready(function(){
+		rouletter.roulette('start');	
+	});
 
-function showNames() {
-				document.getElementById('names').style.visibility='visible';
-				document.getElementById('show').innerHTML='<a class="blue" onClick="hideNames(); return false;">Hide names in box</a>';
-}
 
-function showFile() {
-	document.getElementById('raffle').innerHTML;
-}
+});
+
