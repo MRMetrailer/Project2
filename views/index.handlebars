@@ -3,24 +3,28 @@
     <div class="row">
       <div class="col-8 offset-2">
         <h1>{{msg}}</h1>
-        <h2>This is our Home Page!</h2>
-        <form class="clearfix mb-4" method="POST" action="/api/games">
+
+        <h2>Raffle Administrator</h2>
+        <form class="clearfix mb-4" action="POST">
+
           <div class="form-group">
-            <label for="example-name">Name</label>
-            <input type="text" id="example-name" class="form-control" aria-describedby="example-name" placeholder="Enter Name">
+            <label for="example-name">Prize</label>
+            <input type="text" id="example-name" class="form-control" aria-describedby="example-name" placeholder="Prize">
           </div>
-           <div class="form-group">
+           {{!-- <div class="form-group">
             <label for="example-entries">Entries</label>
             <input type="text" id="example-entries" class="form-control" aria-describedby="example-entries" placeholder="Entries">
           </div>
            <div class="form-group">
             <label for="example-link">Link</label>
             <input type="text" id="example-link" class="form-control" aria-describedby="example-link" placeholder="Enter Image Link">
-          </div>
+          </div> --}}
          
           <button id="submit" class="btn btn-primary float-right">Submit</button>
         </form>
-        <h3>Games:</h3>
+
+        <h3>Game:</h3>
+
         <ul id="example-list" class="list-group">
           {{#each games}}
           <li data-id="{{this.id}}" class="list-group-item">

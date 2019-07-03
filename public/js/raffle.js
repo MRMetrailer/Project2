@@ -50,3 +50,7 @@ function showNames() {
 				document.getElementById('names').style.visibility='visible';
 				document.getElementById('show').innerHTML='<a class="blue" onClick="hideNames(); return false;">Hide names in box</a>';
 }
+
+function showFile() {
+	document.getElementById('raffle').innerHTML;
+}
