@@ -11,7 +11,7 @@ var API = {
         "Content-Type": "application/json"
       },
       type: "POST",
-      url: "api/examples",
+      url: "api/games",
       data: JSON.stringify(example)
     });
   },
@@ -62,15 +62,15 @@ var refreshExamples = function() {
 // Save the new example to the db and refresh the list
 var handleFormSubmit = function(event) {
   event.preventDefault();
-
+  // console.log("EXAMPLE NAME:", $("#example-name").val(), "EXAMPLE ENTRIES:",$("#example-entries").val(), "EXAMPLE LINK:",$("#example-link").val())
   var example = {
     name: $("#example-name").val().trim(),
-    entries: $("#example-entries").val().trim(),
-    link: $("#example-link").val().trim(),
+    // entries: $("#example-entries").val().trim(),
+    // link: $("#example-link").val().trim(),
   };
 
-  if (!(example.name && example.entries && example.link)) {
-    alert("You must enter a name, # of entries and link");
+  if (!(example.name)) {
+    alert("You must enter a prize");
     return;
   }
 
@@ -79,8 +79,8 @@ var handleFormSubmit = function(event) {
   });
 
   $("#example-name").val("");
-  $("#example-entries").val("");
-  $("#example-link").val("");
+  // $("#example-entries").val("");
+  // $("#example-link").val("");
 };
 
 // handleDeleteBtnClick is called when an example's delete button is clicked

@@ -44,4 +44,6 @@ $(function(){
 		rouletter.roulette('start');	
 	});
 
+
 });
+
