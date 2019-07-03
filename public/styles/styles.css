@@ -14,8 +14,7 @@ body {
   transform: translate(-50%, -50%);
 }
 
-#cardRow {
-  min-height: 300px;
+.cardRow {
   background-image: url('../images/spiral1.gif');
   background-position: center;
   background-repeat: no-repeat;
