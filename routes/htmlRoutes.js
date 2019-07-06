@@ -65,7 +65,7 @@ module.exports = function (app) {
             }
           }
           console.log(winner);
-          return res.render("raffle", {
+           res.render("raffle", {
             game: currentGame,
             winner: winner
           });
@@ -104,7 +104,7 @@ module.exports = function (app) {
                     }
                   )
                   .then(function (resultGame) {
-                    return res.render("raffle", {
+                     res.render("raffle", {
                       game: currentGame,
                       winner: winner
                     });
