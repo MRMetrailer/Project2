@@ -1,0 +1,78 @@
+<div class="container">
+  <div class="row">
+    <div class="col-8 offset-2">
+      <div class="card mt-4">
+        <div class="card-body">
+          <h5 class="card-title">Game: {{game.name}}</h5>
+          <div class="row">
+            <div class="col-6">
+              <dl>
+                <dt>Open</dt>
+                <dd id="isOpen">
+                  {{#if game.isOpen}}
+                    Yes
+                  {{else}}
+                    No
+                  {{/if}}
+                </dd>
+                <dt>Winner</dt>
+                <dd id="winner">
+                  {{#if game.winner}}
+                    {{game.winner.name}}
+                  {{else}}
+                    n/a
+                  {{/if}}
+                </dd>
+              </dl>
+            </div>
+            <div class="col-6">
+              <dl>
+                <dt>People</dt>
+                <dd id="numPeople">{{numPeople}}</dd>
+                <dt>Points</dt>
+                <dd id="numEntries">{{numEntries}}</dd>
+              </dl>
+            </div>
+          </div>
+          {{#if game.isOpen}}
+            <a href="/games/{{game.id}}/raffle" onclick="return confirm('Are you sure you want to finish this game and pick a winner?')" class="btn btn-primary float-right">Start Raffle</a>
+          {{else}}
+            <a href="/games/{{game.id}}/raffle" class="btn btn-primary float-right">View Winner</a>
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-8 offset-2">
+      <div class="card mt-4">
+        <div class="card-body">
+
+          <h5 class="card-title">Add your entries here</h5>
+          <form class="clearfix mb-4" id="entryForm">
+            <input type="hidden" name="gameId" value="{{game.id}}">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" class="form-control" aria-describedby="name" placeholder="Enter Name">
+            </div>
+            <div class="form-group">
+              <label for="entries">Points</label>
+              <input type="text" id="points" class="form-control" aria-describedby="points" placeholder="Points">
+            </div>
+            <div class="form-group">
+              <label for="avatar">Avatar</label>
+              <input type="text" id="avatar" class="form-control" aria-describedby="avatar" placeholder="Enter Avatar">
+            </div>
+
+            <button id="submitEntry" class="btn btn-primary float-right">Add Player</button>
+
+          </form>
+         
+          <a href="/">← Back To Home</a>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="/js/index.js"></script>

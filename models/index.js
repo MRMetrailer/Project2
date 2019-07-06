@@ -36,6 +36,9 @@ Object.keys(db).forEach(function(modelName) {
   }
 });
 
+db.game.hasMany(db.entry, { as: "entries" });
+db.entry.belongsTo(db.game, { as: "game" });
+
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 module.exports = db;
