@@ -1,34 +1,26 @@
 <div id="home">
   <div class="container">
     <div class="row">
-      <div class="col-8 offset-2">
-        <h1>{{msg}}</h1>
-
-        <h2>Raffle Administrator</h2>
+      <div class="col-8 offset-2"> 
+        <h1 style="color:white; text-align: center;">{{msg}}</h1>
+<br><br>
         <form class="clearfix mb-4">
 
           <div class="form-group">
-            <label for="example-name">Prize</label>
+            <label for="example-name">
+              <h3 style="color:white">Prize:</h3>
+              </label>
             <input type="text" id="example-name" class="form-control" aria-describedby="example-name" placeholder="Prize">
           </div>
-           {{!-- <div class="form-group">
-            <label for="example-entries">Entries</label>
-            <input type="text" id="example-entries" class="form-control" aria-describedby="example-entries" placeholder="Entries">
-          </div>
-           <div class="form-group">
-            <label for="example-link">Link</label>
-            <input type="text" id="example-link" class="form-control" aria-describedby="example-link" placeholder="Enter Image Link">
-          </div> --}}
-         
           <button id="submit" class="btn btn-primary float-right">Submit</button>
         </form>
 
-        <h3>Game:</h3>
+        <h3 style="color:white">Current Games:</h3>
 
         <ul id="example-list" class="list-group">
           {{#each games}}
           <li data-id="{{this.id}}" class="list-group-item">
-            <a href="games/{{this.id}}">{{this.name}} -- {{#if this.is_over}}OVER{{else}}OPEN{{/if}}</a>
+            <a href="games/{{this.id}}">{{this.name}} -- {{#if this.isOver}}OVER{{else}}OPEN{{/if}}</a>
             <button class="btn btn-danger float-right delete">ｘ</button>
           </li>
           {{/each}}
@@ -39,16 +31,6 @@
 </div>
 <br>
 <br>
-<div id="raffle">
-  <div class="container">
-    <div class="row">
-            <div class="col-8 offset-2">
-              <h1>This is for the Raffle</h1>
-              <p>Content goes here!</p>
-            </div>
-    </div>
-  </div>
-</div>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>
