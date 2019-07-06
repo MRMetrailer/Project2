@@ -48,8 +48,10 @@ $(function () {
 });
 
 function loadRaffle() {
+	$('#winnerName').hide();
 	setTimeout(function () {
 		var element = document.getElementById("replace");
 		element.classList.add("cardRow");
+		$('#winnerName').show();
 	}, 8000);
 }
