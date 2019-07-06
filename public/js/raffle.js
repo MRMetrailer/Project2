@@ -1,27 +1,27 @@
-$(function(){
+$(function () {
 
-	$('.roulette').find('img').hover(function(){
+	$('.roulette').find('img').hover(function () {
 		console.log($(this).height());
 	});
-	var appendLogMsg = function(msg) {
+	var appendLogMsg = function (msg) {
 		$('#msg')
-	.append('<p class="muted">' + msg + '</p>')
-	.scrollTop(100000000);
+			.append('<p class="muted">' + msg + '</p>')
+			.scrollTop(100000000);
 
 	}
 	var p = {
-		startCallback : function() {
+		startCallback: function () {
 			appendLogMsg('start');
 			$('#speed, #duration').slider('disable');
 			$('#stopImageNumber').spinner('disable');
 			$('.start').attr('disabled', 'true');
 			$('.stop').removeAttr('disabled');
 		},
-		slowDownCallback : function() {
+		slowDownCallback: function () {
 			appendLogMsg('slowdown');
 			$('.stop').attr('disabled', 'true');
 		},
-		stopCallback : function($stopElm) {
+		stopCallback: function ($stopElm) {
 			appendLogMsg('stop');
 			$('#speed, #duration').slider('enable');
 			$('#stopImageNumber').spinner('enable');
@@ -31,19 +31,27 @@ $(function(){
 
 	}
 	var rouletter = $('div.roulette');
-	rouletter.roulette(p);	
-	$('.stop').click(function(){
+	rouletter.roulette(p);
+	$('.stop').click(function () {
 		var stopImageNumber = $('.stopImageNumber').val();
-		if(stopImageNumber == "") {
+		if (stopImageNumber == "") {
 			stopImageNumber = null;
 		}
-		rouletter.roulette('stop');	
+		rouletter.roulette('stop');
 	});
 	$('.stop').attr('disabled', 'true');
-	$('.start').ready(function(){
-		rouletter.roulette('start');	
+	$('.start').ready(function () {
+		rouletter.roulette('start');
 	});
 
 
 });
 
+function loadRaffle() {
+	$('#winnerName').hide();
+	setTimeout(function () {
+		var element = document.getElementById("replace");
+		element.classList.add("cardRow");
+		$('#winnerName').show();
+	}, 8000);
+}
