@@ -36,8 +36,13 @@ Object.keys(db).forEach(function(modelName) {
   }
 });
 
-db.game.hasMany(db.entry, { as: "entries" });
-db.entry.belongsTo(db.game, { as: "game" });
+db.game.hasMany(db.entry, { 
+  as: "entries"
+});
+db.entry.belongsTo(db.game, { 
+  as: "game", 
+  onDelete: 'CASCADE'
+});
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;

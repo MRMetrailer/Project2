@@ -45,7 +45,7 @@ var API = {
   },
   deleteExample: function (id) {
     return $.ajax({
-      url: "api/games/" + id,
+      url: "/api/games/" + id,
       type: "DELETE"
     });
   }
@@ -111,21 +111,27 @@ var handleDeleteBtnClick = function () {
   var idToDelete = $(this)
     .parent()
     .attr("data-id");
-
   API.deleteExample(idToDelete).then(function () {
     refreshExamples();
   });
 };
 
 var handleSubmitEntry = function(entryFormSubmitEvent) {
+  $(".alert").hide();
   API.createEntry({
     gameId: $("input[name='gameId']", entryFormSubmitEvent.target).val(),
     name: $("#name", entryFormSubmitEvent.target).val().trim(),
     points: $("#points", entryFormSubmitEvent.target).val().trim(),
-    avatar: $("#avatar", entryFormSubmitEvent.target).val().trim(),
+    avatar: $("input[name='avatar-id']").val()
   })
   .then(function () {
-    // window.location.refresh();
+    console.log("saved entry");
+    $(".alert-success").show();
+    window.location.reload(false);
+  })
+  .catch(function (error) {
+    $(".alert-danger").show();
+    console.log("Failed saving entry");
   });
   entryFormSubmitEvent.preventDefault();
 }
@@ -142,3 +148,10 @@ $submitBtn.on("click", handleFormSubmit);
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
 entryForm.on("submit", handleSubmitEntry);
 startRaffleBtn.on('click', handleClickStart);
+
+$(".dropdown-menu .dropdown-item").on("click", function (event) {
+  event.preventDefault();
+  $("#selectedAvatar > img").attr("src", $("img", event.target).first().attr("src"));
+  $("#selectedAvatar").show();
+  $("input[name='avatar-id']").val($(event.target).data("image-id"));
+})

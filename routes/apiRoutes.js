@@ -19,20 +19,6 @@ module.exports = function (app) {
       });
   });
 
-  // Find one game by id
-  app.get("/api/games/:gameId", function (req, res) {
-    db.game
-      .findOne({
-        where: {
-          id: req.params.gameId
-        }
-      })
-      .then(function (dbGames) {
-        console.log(dbGames);
-        res.json(dbGames);
-      });
-  });
-
   // Delete a game by id
   app.delete("/api/games/:gameId", function (req, res) {
     db.game
@@ -44,7 +30,6 @@ module.exports = function (app) {
 
   // create entry
   app.post("/api/games/:gameId/enter", function(req, res) {
-    // todo - check game is still open
     db.entry
       .create({
         gameId: req.params.gameId,
