@@ -6,7 +6,7 @@ body {
 }
 
 .roulette, .cardBody {
-  margin: 0;
+  margin-top: 0px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -22,15 +22,54 @@ body {
 }
 
 .dropdown-menu, .dropdown-toggle {
-  width: 250px;
+  width: 688px;
 }
 
-.dropdown-item {
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  font-size: 25px;
-}
+
 
 .dropdown img {
   margin: 10px;
-  width: 75px;
+  width: 100px;
+}
+
+.btn-primary {
+  color: black;
+  background-color: #e4cb40;
+  font-family: bebas-neue, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 25px;
+
+}
+dt, label, .dropdown-item, #goBack {
+  font-family: bebas-neue, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 25px;
+}
+
+h5 {
+  font-family: cheap-pine, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 50px;
+  margin: auto;
+}
+
+h2 {
+  font-family: cheap-pine, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 50px;
+  margin: auto;
+}
+
+#Prize, #Current {
+  color: white;
+  font-family: cheap-pine, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 50px;
+  margin: auto;
+
 }

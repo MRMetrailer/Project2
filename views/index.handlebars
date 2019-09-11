@@ -2,20 +2,21 @@
   <div class="container">
     <div class="row">
       <div class="col-8 offset-2"> 
-        <h1 style="color:white; text-align: center;">{{msg}}</h1>
+        <img src="../images/NoTicket-logo.png" alt="NoTicket-logo" width="700" text-align="center">
+        {{!-- <h1 style="color:white; text-align: center;">{{msg}}</h1> --}}
 <br><br>
         <form class="clearfix mb-4">
 
-          <div class="form-group">
+          <div class="form-group text-center">
             <label for="example-name">
-              <h3 style="color:white">Prize:</h3>
+              <h3 id="Prize">Prize:</h3>
               </label>
             <input type="text" id="example-name" class="form-control" aria-describedby="example-name" placeholder="Prize">
           </div>
           <button id="submit" class="btn btn-primary float-right">Submit</button>
         </form>
 
-        <h3 style="color:white">Current Games:</h3>
+        <h3 id="Current" class="text-center">Current Raffles:</h3>
 
         <ul id="example-list" class="list-group">
           {{#each games}}
